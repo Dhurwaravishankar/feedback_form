@@ -2,6 +2,7 @@
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background-color: #f4f6f8;
@@ -29,6 +30,7 @@ h2 {
   text-align: center;
   font-weight: 600;
   color: #222;
+  font-size: 1.8em;
 }
 
 /* Form layout */
@@ -42,29 +44,41 @@ label {
   font-weight: 600;
   margin-bottom: 6px;
   color: #333;
+  font-size: 1em;
 }
 
 /* Inputs and textarea */
 input[type="text"],
 input[type="email"],
 textarea {
-  padding: 12px 14px;
+  padding: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1em;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  width: 100%;
+  max-width: 100%; /* ✅ Prevents overflow */
+  box-sizing: border-box;
+  min-height: 48px;
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
+
+/* Textarea specific fix */
+textarea {
+  resize: vertical; /* ✅ Only vertical resizing allowed */
+}
+
+/* Focus styles */
 input[type="text"]:focus,
 input[type="email"]:focus,
 textarea:focus {
   outline: none;
-  border-color: #007BFF;
+  border-color: #007bff;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
   transform: scale(1.02);
 }
 
-/* Error message styles with animation */
+/* Error message styles with smooth animation */
 .error-message {
   color: #d9534f;
   font-size: 0.85em;
@@ -73,32 +87,37 @@ textarea:focus {
   opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transition: opacity 0.3s ease, max-height 0.3s ease, margin-bottom 0.3s ease;
+  transition: opacity 0.3s ease, max-height 0.3s ease, margin-bottom 0.3s ease, padding 0.3s ease;
+  padding: 0;
 }
+
 .error-message.show {
   opacity: 1;
   max-height: 100px;
   margin-bottom: 12px;
+  padding: 4px 8px;
 }
 
-/* Submit button styles with hover animation */
+/* Submit button */
 button {
-  padding: 14px;
+  padding: 16px;
+  font-size: 1.1em;
   background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 4px;
-  font-size: 1em;
   cursor: pointer;
   margin-top: 16px;
   transition: background-color 0.2s, transform 0.2s;
 }
-button:hover {
+
+button:hover,
+button:focus {
   background-color: #0056b3;
   transform: translateY(-2px);
 }
 
-/* Success message with fade-in/out animation */
+/* Success message */
 #successMessage {
   display: none;
   margin-top: 24px;
@@ -113,6 +132,7 @@ button:hover {
   transform: translateY(-10px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
 #successMessage.show {
   display: block;
   opacity: 1;
@@ -121,7 +141,17 @@ button:hover {
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
   .container {
     padding: 30px 20px;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  button {
+    padding: 14px;
+    font-size: 1em;
   }
 }
