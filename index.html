@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container" role="region" aria-labelledby="contact-form-title">
+  <h2 id="contact-form-title">Contact Us</h2>
+  <form id="contactForm" aria-live="polite" novalidate>
+    <!-- Name -->
+    <label for="name">Name<span style="color: #d9534f;"> *</span></label>
+    <input type="text" id="name" name="name" aria-required="true" aria-describedby="nameError" />
+
+    <!-- Error message for Name -->
+    <div class="error-message" id="nameError"></div>
+
+    <!-- Email -->
+    <label for="email">Email<span style="color: #d9534f;"> *</span></label>
+    <input type="email" id="email" name="email" aria-required="true" aria-describedby="emailError" />
+
+    <!-- Error message for Email -->
+    <div class="error-message" id="emailError"></div>
+
+    <!-- Message -->
+    <label for="message">Message<span style="color: #d9534f;"> *</span></label>
+    <textarea id="message" name="message" rows="5" aria-required="true" aria-describedby="messageError"></textarea>
+
+    <!-- Error message for Message -->
+    <div class="error-message" id="messageError"></div>
+
+    <!-- Submit button -->
+    <button type="submit">Send Message</button>
+  </form>
+
+  <!-- Success message -->
+  <div id="successMessage" role="alert" aria-live="assertive">
+    Your message has been sent successfully!
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
